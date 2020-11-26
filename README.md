@@ -294,3 +294,9 @@ Clean-up all resources
 
 
 * Disconnect any connected repositories
+
+* Delete your project using its project ID or project number
+
+    ```bash
+    gcloud projects delete $PROJECT_ID
+    ```
