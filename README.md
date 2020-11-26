@@ -1,7 +1,7 @@
 Motivation
 ===
 
-Workshop to get familiar with Google Cloud Build core concepts  
+Workshop to get familiar with **Google Cloud Build** core concepts  
 
 Build your app
 ===
@@ -40,11 +40,40 @@ Build your app
         flask --version
         ```
 
-* Run your app
+* Clone the following project
+
+    [Gtihub Link](https://github.com/codeworks-secops/gcp-cloud-build)
+
+* What about our Application ?
+
+    - The goals of our sample greeting application are multiple : 
+ 
+        - Say `Hello from CodeDay!` when the `/hello` route is invoked
+        
+        - Say `I'm hamza from CodeDay!` when the `/hello/hamza` route is invoked
+        
+        - Display an increment counter each time we visit one of the previous routes
+
+* Some screenshots !
+
+    * Route `/hello`
+
+        <img src="screenshots/hello.png" width="550">
+
+    * Route `/hello/<name>`
+
+        <img src="screenshots/hello_name.png" width="550">
+
+* Run the app in your local machine
+    
+    * Go to the **gcp-cloud-build** project location
+        ```bash
+        cd PATH_TO_YOUR_LOCAL_REPOSITORY/gcp-cloud-build
+        ```
 
     * Export FLASK_APP environment variable to tell the terminal, the application to work with
         ```bash
-        export FLASK_APP=app.py
+        export FLASK_APP=app/app.py
         ```
     * Run the Flask application
         ```bash
@@ -52,7 +81,11 @@ Build your app
         ```
     * Check url access (on terminal or browser) 
         ```bash
-        localhost:5000
+        http://localhost:5000
+        ```
+
+        ```bash
+        curl http://localhost:5000
         ```
 
 Architecture
@@ -91,7 +124,7 @@ Initialize Tooling
         ```bash
         ./google-cloud-sdk/install.sh --help
         ```
-Create new GCP Project
+Create a new GCP Project
 ===
 * Get the billing accounts list
 
@@ -136,7 +169,7 @@ Create new GCP Project
 
     * From the Google Cloud Console
 
-Init GCP Project
+Init GCP configuration
 ===
 
 * Configure the gcloud tool to match account / project / zone to use from scratch
@@ -219,7 +252,7 @@ Check the console
 Accessing the deployed application
 ===
 
-* Get the URL from Cloud Run console
+* Get the URL from the Cloud Run console
 
 Clean-up
 ===
