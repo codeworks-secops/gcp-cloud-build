@@ -3,7 +3,7 @@ Motivation
 
 Workshop to get familiar with **Google Cloud Build** core concepts  
 
-Build your app
+1 . Build your app
 ===
 
 * Install Python
@@ -88,7 +88,7 @@ Build your app
         curl http://localhost:5000
         ```
 
-Architecture
+2 . Architecture
 ===
 
 * Google Drive 
@@ -99,7 +99,7 @@ Architecture
 
     <img src="./screenshots/architecture.png" alt="cloud_build_architecture"/>
 
-Initialize Tooling
+3 . Initialize Tooling
 ===
 
 - Install Google Cloud SDK
@@ -124,7 +124,7 @@ Initialize Tooling
         ```bash
         ./google-cloud-sdk/install.sh --help
         ```
-Create a new GCP Project
+4 . Create a new GCP Project
 ===
 * Get the billing accounts list
 
@@ -173,7 +173,7 @@ Create a new GCP Project
 
     * From the Google Cloud Console
 
-Init GCP configuration
+5 . Init GCP configuration
 ===
 
 * Configure the gcloud tool to match account / project / zone to use from scratch
@@ -194,7 +194,7 @@ Init GCP configuration
     gcloud config list
     ```
 
-Enable APIs
+6 . Enable APIs
 ===
 
 * Services available to the project to enable. This list will include any services that the project has already enabled.
@@ -214,7 +214,7 @@ Enable APIs
     gcloud services enable containerregistry.googleapis.com 
     ```
 
-Configure IAM permissions
+7 . Configure IAM permissions
 ====
 
 Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permissions before it can deploy an image to Cloud Run.
@@ -236,28 +236,28 @@ Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permis
         --role=roles/iam.serviceAccountUser
     ```
 
-Configure our Cloud Build Pipeline
+8 . Configure our Cloud Build Pipeline
 ====
 
 * Open the **cloudbuild.yaml** manifest file located in the root of the project
 
 * What do you think ? 
 
-Setup the Cloud Build Trigger
+9 . Setup the Cloud Build Trigger
 ===
 
 * Use the GCP web-based Console
 
 * Connect a Github Repository
 
-Trigger builds
+10 . Trigger builds
 ===
 
 * Commit your changes
 
 * Push your changes
 
-Check the GCP Console
+11 . Check the GCP Console
 ===
 
 * Cloud Container Registry
@@ -266,12 +266,12 @@ Check the GCP Console
 
 * Cloud Run
 
-Access the deployed application
+12 . Access the deployed application
 ===
 
 * Pick the URL from the Cloud Run Console
 
-Clean-up all resources
+13 . Clean-up all resources
 ===
 
 * Delete the deployed Cloud Run service
