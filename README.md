@@ -221,7 +221,7 @@ Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permis
         --role=roles/iam.serviceAccountUser
     ```
 
-Configuring our Cloud Build Pipeline
+Configure our Cloud Build Pipeline
 ====
 
 * Open the **cloudbuild.yaml** manifest file located in the root of the project
@@ -233,7 +233,7 @@ Set Up the Cloud Build Trigger
 
 * Connect a Github Repository
 
-Triggering builds
+Trigger builds
 ===
 
 * Commit your changes
@@ -249,12 +249,12 @@ Check the console
 
 * Cloud Run
 
-Accessing the deployed application
+Access the deployed application
 ===
 
 * Get the URL from the Cloud Run console
 
-Clean-up
+Clean-up all resources
 ===
 
 * Delete the deployed Cloud Run service
