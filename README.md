@@ -1,43 +1,59 @@
+Motivation
+===
+
+Workshop to get familiar with Google Cloud Build core concepts  
+
 Build your app
 ===
 
 * Install Python
 
+* Check the Python install
+
     ```bash
-    # Check the Python installation
     python --version
     ```
 * Install Pip
 
-    ```bash
-    # Update your system dependencies
-    sudo apt update
-    # Intall pip
-    sudo apt install python3-pip
-    # Check the Pip installation
-    pip3 -V
-    pip3 --version
-    ```
+    * Update your system dependencies
+        ```bash
+        sudo apt update
+        ```
+    * Intall pip
+        ```bash
+        sudo apt install python3-pip
+        ```
+    * Check the Pip installation
+        ```bash
+        pip3 -V
+        pip3 --version
+        ```
 
 * Install Flask
 
-    ```bash
-    # Install flask using pip
-    pip3 install flask
-    # Check the Flask installation
-    flask --version
-    ```
+    * Install flask using pip
+        ```bash
+        pip3 install flask
+        ```
+    * Check the Flask installation
+        ```bash
+        flask --version
+        ```
 
 * Run your app
 
-    ```bash
-    # Export FLASK_APP environment variable to tell the terminal, the application to work with
-    export FLASK_APP=app.py
-    # Run the Flask application
-    flask run
-    # Check url access (on terminal or browser) 
-    localhost:5000
-    ```
+    * Export FLASK_APP environment variable to tell the terminal, the application to work with
+        ```bash
+        export FLASK_APP=app.py
+        ```
+    * Run the Flask application
+        ```bash
+        flask run
+        ```
+    * Check url access (on terminal or browser) 
+        ```bash
+        localhost:5000
+        ```
 
 Architecture
 ===
@@ -50,37 +66,96 @@ Architecture
 
     <img src="./screenshots/architecture.png" alt="cloud_build_architecture"/>
 
-Create new GCP Project
+Initialize Tooling
 ===
 
-```bash
-# Get billing accounts list
-$> gcloud alpha billing accounts list
-# Get the Organisation ID
-ORGANISATION_ID=$(gcloud organizations describe codeworks.fr --format=json | jq '.name' | cut -f 2 -d '/' | sed 's/"//g')
-# Name project
-$> PROJECT_ID=codeworks-cloud-build-test
-# Create a new project
-$> gcloud projects create ${PROJECT_ID} --organization=${ORGANISATON_ID}
-# Grab the project number
-$> PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
-# Link the project to the billing account
-$> gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=0150EE-171E17-3E357F
-# Check the console if you want !!!
-```
+- Install Google Cloud SDK
+    
+    * [Official install docs](https://cloud.google.com/sdk/docs/install)
+    
+    * Make sure that Python is installed in your machine
+
+    * Download the latest version
+        ```bash
+        curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-319.0.0-linux-x86.tar.gz
+        ```
+    * Unzip the archive
+        ```bash
+        tar zxvf google-cloud-sdk-319.0.0-linux-x86
+        ```
+    * Launch the **instal.sh** script
+        ```bash
+        ./google-cloud-sdk/install.sh
+        ```
+    * Verify your local installation
+        ```bash
+        ./google-cloud-sdk/install.sh --help
+        ```
+Create new GCP Project
+===
+* Get the billing accounts list
+
+    ```bash
+    gcloud alpha billing accounts list
+    ```
+
+* Get the Organisation ID
+
+    ```bash
+    ORGANISATION_ID=$(gcloud organizations describe codeworks.fr --format=json | jq '.name' | cut -f 2 -d '/' | sed 's/"//g')
+    ```
+* Name the project
+
+    ```bash
+    PROJECT_ID=codeworks-cloud-build-test 
+    ```
+* Create new project
+
+    ```bash
+    gcloud projects create ${PROJECT_ID} --organization=${ORGANISATON_ID}
+    ```
+
+* Get the project number
+
+    ```bash
+    PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+    ```
+
+* Link the project to the billing account
+
+    ```bash
+    gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=0150EE-171E17-3E357F
+    ```
+
+* Inspects
+
+    * From your terminal
+        ```bash
+        gcloud projects list
+        ```
+
+    * From the Google Cloud Console
 
 Init GCP Project
 ===
 
-```bash
-# Configure gcloud to match account / project / zone to use from scratch
-$> gcloud init
-# Display zones list
-$> gcloud compute zones list
-$> gcloud init
-# Checl all of the configuration
-$> gcloud config list
-```
+* Configure the gcloud tool to match account / project / zone to use from scratch
+    ```bash
+    gcloud init
+    ```
+* Display zones list
+    ```bash
+    gcloud compute zones list
+    ```
+* Another init !! to init the compute zone
+    ```bash
+    gcloud init
+    ```
+
+* Checl all of the configuration
+    ```bash
+    gcloud config list
+    ```
 
 Enable APIs
 ===
@@ -116,14 +191,14 @@ Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permis
 Configuring our Cloud Build Pipeline
 ====
 
-* Open the **cloudbuild.yaml** manifest file in the root of the project
+* Open the **cloudbuild.yaml** manifest file located in the root of the project
 
 Set Up the Cloud Build Trigger
 ===
 
 * Use the GCP web-based console
 
-* Connect a Github Repository or Cloud Source Repository
+* Connect a Github Repository
 
 Triggering builds
 ===
@@ -152,17 +227,17 @@ Clean-up
 * Delete the deployed Cloud Run service
     
     ```bash
-    $> gcloud beta run services list
+    gcloud beta run services list
     
-    $> gcloud beta run services delete SERVICE_NAME
+    gcloud beta run services delete SERVICE_NAME
     ```
 
 * Delete the Container Registry saved images
 
     ```bash
-    $> gcloud container images list
+    gcloud container images list
 
-    $> gcloud container images delete IMAGE_NAME
+    gcloud container images delete IMAGE_NAME
     ```
 
 * Delete the Cloud Build configured triggers
