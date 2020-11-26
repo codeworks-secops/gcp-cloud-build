@@ -1,0 +1,20 @@
+body {
+    background-color: #197be0;
+    color: white;
+    text-align: center;
+}
+
+.container .host,
+.container .counter {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.host {
+    font-size: 5em;
+}
+
+.counter {
+    font-size: 4em;
+    margin-top: 10px;
+}
