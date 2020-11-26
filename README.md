@@ -193,11 +193,22 @@ Init GCP configuration
 Enable APIs
 ===
 
-* Cloud Build
+* Services available to the project to enable. This list will include any services that the project has already enabled.
+    
+    ```bash
+    gcloud services list --available
+    ```
+    
+* Enable Cloud Build service
 
-* Cloud Run
+    ```bash
+    gcloud services enable cloudbuild.googleapis.com 
+    ```
+* enable Container Registry service
 
-* Container Registry
+    ```bash
+    gcloud services enable containerregistry.googleapis.com 
+    ```
 
 Configure IAM permissions
 ====
@@ -226,10 +237,12 @@ Configure our Cloud Build Pipeline
 
 * Open the **cloudbuild.yaml** manifest file located in the root of the project
 
-Set Up the Cloud Build Trigger
+* What do you think ? 
+
+Setup the Cloud Build Trigger
 ===
 
-* Use the GCP web-based console
+* Use the GCP web-based Console
 
 * Connect a Github Repository
 
@@ -240,7 +253,7 @@ Trigger builds
 
 * Push your changes
 
-Check the console
+Check the GCP Console
 ===
 
 * Cloud Container Registry
@@ -252,7 +265,7 @@ Check the console
 Access the deployed application
 ===
 
-* Get the URL from the Cloud Run console
+* Pick the URL from the Cloud Run Console
 
 Clean-up all resources
 ===
