@@ -140,7 +140,11 @@ Create a new GCP Project
 * Name the project
 
     ```bash
-    PROJECT_ID=codeworks-cloud-build-test 
+    # Replace <FIRSTNAME-LASTNAME> with your own value
+    PROJECT_ID=codeworks-<FIRSTNAME-LASTNAME>-cloud-build-workshop 
+    
+    # Here's an example
+    PROJECT_ID=codeworks-hamza-elyaaqoubi-cloud-build-workshop
     ```
 * Create new project
 
