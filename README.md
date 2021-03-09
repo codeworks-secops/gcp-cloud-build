@@ -81,11 +81,11 @@ Workshop to get familiar with **Google Cloud Build** core concepts
         ```
     * Check url access (on terminal or browser) 
         ```bash
-        http://localhost:5000
+        http://localhost:5000/hello
         ```
 
         ```bash
-        curl http://localhost:5000
+        curl http://localhost:5000/hello
         ```
 
 2 . Architecture
