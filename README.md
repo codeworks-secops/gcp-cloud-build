@@ -144,7 +144,7 @@ Workshop to get familiar with **Google Cloud Build** core concepts
     PROJECT_ID=codeworks-<FIRSTNAME-LASTNAME>-cbw
     
     # Here's an example
-    PROJECT_ID=codeworks-hamza-elyaaqoubi-cloud-build-workshop
+    PROJECT_ID=codeworks-hamza-elyaaqoubi-cbw
     ```
 * Create new project
 
@@ -202,7 +202,12 @@ Workshop to get familiar with **Google Cloud Build** core concepts
     ```bash
     gcloud services list --available
     ```
-    
+* Enable Cloud Run Admin API
+
+    ```bash
+    gcloud services enable run.googleapis.com
+    ```    
+
 * Enable Cloud Build service
 
     ```bash
