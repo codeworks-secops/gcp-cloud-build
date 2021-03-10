@@ -141,7 +141,7 @@ Workshop to get familiar with **Google Cloud Build** core concepts
 
     ```bash
     # Replace <FIRSTNAME-LASTNAME> with your own value
-    PROJECT_ID=codeworks-<FIRSTNAME-LASTNAME>-cloud-build-workshop 
+    PROJECT_ID=codeworks-<FIRSTNAME-LASTNAME>-cbw
     
     # Here's an example
     PROJECT_ID=codeworks-hamza-elyaaqoubi-cloud-build-workshop
