@@ -132,11 +132,12 @@ Workshop to get familiar with **Google Cloud Build** core concepts
     gcloud alpha billing accounts list
     ```
 
-* Get the Organisation ID
+* Get the GCP Folder ID
 
     ```bash
-    ORGANISATION_ID=$(gcloud organizations describe codeworks.fr --format=json | jq '.name' | cut -f 2 -d '/' | sed 's/"//g')
+    GCP_FOLDER_ID=$( gcloud alpha resource-manager folders list --folder=695487100615 --format=json | jq -c '.[] | select( .displayName | contains("GCP"))' | jq '.name' | cut -f 2 -d '/' | sed 's/"//g')
     ```
+
 * Name the project
 
     ```bash
@@ -149,7 +150,7 @@ Workshop to get familiar with **Google Cloud Build** core concepts
 * Create new project
 
     ```bash
-    gcloud projects create ${PROJECT_ID} --organization=${ORGANISATON_ID}
+    gcloud projects create ${PROJECT_ID} --folder=${GCP_FOLDER_ID}
     ```
 
 * Get the project number
@@ -161,7 +162,7 @@ Workshop to get familiar with **Google Cloud Build** core concepts
 * Link the project to the billing account
 
     ```bash
-    gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=0150EE-171E17-3E357F
+    gcloud alpha billing accounts projects link ${PROJECT_NUMBER} --account-id=${REPLACE_WITH_AN_ENABLED_ACCOUNT_ID}
     ```
 
 * Inspects
@@ -202,11 +203,12 @@ Workshop to get familiar with **Google Cloud Build** core concepts
     ```bash
     gcloud services list --available
     ```
+
 * Enable Cloud Run Admin API
 
     ```bash
     gcloud services enable run.googleapis.com
-    ```    
+    ```
 
 * Enable Cloud Build service
 
@@ -241,26 +243,43 @@ Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permis
         --role=roles/iam.serviceAccountUser
     ```
 
-8 . Configure our Cloud Build Pipeline
+8 . Cloud Build Configuration
 ====
 
 * Open the **cloudbuild.yaml** manifest file located in the root of the project
 
 * What do you think ? 
 
+* Rename this variable **CHANGE_ME_WITH_YOUR_OWN_CLOUD_RUN_SERVICE_NAME** in the manifest file like this :
+    
+    ```bash
+    codeworks-<FIRSTNAME-LASTNAME>-service
+    ```
+
 9 . Setup the Cloud Build Trigger
 ===
 
 * Use the GCP web-based Console
 
-* Connect a Github Repository
+* Choose Push to a branch
+
+* Connect your Github Repository (https://github.com/codeworks-secops)
+
+* Choose gcp-cloud-build project
+
+* Choose only your own branch to be triggered
+
+* Choose the Cloud Build Configutation as Build configuration
+
+* Click CREATE button
 
 10 . Trigger builds
 ===
+* Create a new Git branch with your name
 
-* Commit your changes
+* Commit your local changes
 
-* Push your changes
+* Push your new branch
 
 11 . Check the GCP Console
 ===
@@ -305,4 +324,3 @@ Cloud Build requires **Cloud Run Admin** and **IAM Service Account User** permis
     ```bash
     gcloud projects delete $PROJECT_ID
     ```
-
