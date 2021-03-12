@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 count = 0
 
+@app.route('/', methods=["GET"])
 @app.route('/hello/', methods=["GET"])
 @app.route('/hello/<name>', methods=["GET"])
 def hello(name=None):
