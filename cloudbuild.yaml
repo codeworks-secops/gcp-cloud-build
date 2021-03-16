@@ -22,5 +22,4 @@ steps:
         "managed",
         "--allow-unauthenticated",
       ]
-substitutions:
-  _SERVICE_NAME: codeworks-idrissa-service
+
