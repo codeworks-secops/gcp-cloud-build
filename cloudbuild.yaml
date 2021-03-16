@@ -23,4 +23,4 @@ steps:
         "--allow-unauthenticated",
       ]
 substitutions:
-  _SERVICE_NAME: <codeworks-<FIRSTNAME-LASTNAME>-service>
+  _SERVICE_NAME: codeworks-edwin-oursel-service
